@@ -39,8 +39,12 @@ app.get('/', (req, res) => {
 app.post('/addOne', (req, res) => {
     console.log('--Post heard')
     db.collection('alien-info-coll').insertOne(
-
+        req.body
     )
+        .then(result => {
+            console.log(result)
+            res.redirect('/')
+    })
 })
 
 app.post('/updareEntry', (req, res) => {
