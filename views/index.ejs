@@ -9,25 +9,27 @@
 </head>
 <body>
     <section class="row">        
-        <section class="column">
+        <section class="column col-1">
+            <h2>Add Alien data here...</h2>
+            <form /action="/addEntry" method="POST">
+                <input type="text" placeholder="Name..." name="name">
+                <input type="text" placeholder="Species Name..." name="speciesName">
+                <textarea type="text" rows="5" cols="40" placeholder="Features..." name="features"></textarea>
+                <input type="text" placeholder="Home World..." name="homeWorld">
+                <input type="text" placeholder="Image..." name="image">
+                <textarea type="text" rows="5" cols="40" placeholder="Interesting Facts..." name="interestingFacts"></textarea>
+                <input type="text" placeholder="Noteable Examples..." name="noteableExamples">
+                <button type="submit">CREATE</button>
+                <button type="button" id="updateButton">UPDATE</button>
+            </form>
+        </section>
+        <section class="column col-2">
+            <h2>Delete Aliens data here ...</h2>
+            <input type="text" placeholder="Name to delete..." name="deleteInput" id="deleteInput">
+            <button type="button" id="deleteButton">DELETE</button>
+
+
             <h2>Current Aliens ...</h2>
-            <section class="column">
-                <h2>Input API data here...</h2>
-                <form /action="/addOne" method="POST">
-                    <input type="text" placeholder="Name..." name="">
-                    <input type="text" placeholder="Species Name..." name="speciesName">
-                    <textarea type="text" rows="5" cols="40" placeholder="Features..." name="features"></textarea>
-                    <input type="text" placeholder="Home World..." name="homeWorld">
-                    <input type="text" placeholder="Image..." name="image">
-                    <textarea type="text" rows="5" cols="40" placeholder="Interesting Facts..." name="interestingFacts"></textarea>
-                    <input type="text" placeholder="Noteable Examples..." name="noteableExamples">
-                    <button type="submit">Submit New</button>
-                    <button type="button" id="updateButton">Update</button>
-
-
-
-                </form>
-            </section>
             <ul class="aliens">
                 <% for(let i=0; i < info.length; i++) {%>
                     <li class="alien">

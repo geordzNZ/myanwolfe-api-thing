@@ -1,6 +1,16 @@
 body {
     font-family: 'Courier New', Courier, monospace;
 }
+h2 {
+    text-decoration: underline;
+}
 .row {
     background-color: beige;
+    display: flex;
+}
+.column {
+    flex: 50%;
+}
+input {
+    display: block;
 }
