@@ -5,10 +5,10 @@ require('dotenv').config()
 
 const PORT = 8005
 
-//Databse setup
+// Databse setup
 let db,
     dbConnectionString = process.env.DB_STRING,
-    dbName = 'myanwolfe-api-thing'
+    dbName = 'alien-info-db'
 
 MongoClient.connect(dbConnectionString)
     .then(client => {
@@ -17,11 +17,40 @@ MongoClient.connect(dbConnectionString)
         console.log(`Connected to the ${dbName} database`)
     })
 
- //Tells our App how to do it's things -- middleware
+ // Middleware -- Tells our App how to do it's things
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
+
+
+// Basic route / CRUD methods
+app.get('/', (req, res) => {
+    console.log('--Get heard')
+    db.collection('alien-info-coll').find().toArray()        
+        .then(data => {
+            let nameList = data.map(item => item.speciesName)
+            console.log(nameList)
+            res.render('index.ejs', { info: nameList})
+            })
+        .catch(error => console.log('Get error:',error))
+})
+
+app.post('/addOne', (req, res) => {
+    console.log('--Post heard')
+    db.collection('alien-info-coll').insertOne(
+
+    )
+})
+
+app.post('/updareEntry', (req, res) => {
+    
+})
+
+app.delete('/deleteEntry', (req, res) => {
+    
+})
+
 
 
 
